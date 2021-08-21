@@ -36,14 +36,15 @@ case "${OS}" in
     pip3 install requests[socks] > /dev/null 2>&1
     pip3 install stem > /dev/null 2>&1
     pip3 install instagram-py > /dev/null 2>&1
-    #<<<------configuration------->>>
+    #<<<------configuration-ANDROID------->>>
     dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
-    rm -rf /data/data/com.termux/files/usr/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
-    mv -v assets/InstagramPy /data/data/com.termux/files/usr/lib/python3.9/site-packages > /dev/null 2>&1
+    rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
+    mv -v assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
-    rm /data/data/com.termux/files/usr/etc/tor/torrc > /dev/null 2>&1
-    mv assets/torrc /data/data/com.termux/files/usr/etc/tor > /dev/null 2>&1
+    rm -rf $PREFIX/etc/tor/torrc > /dev/null 2>&1
+    mv assets/torrc $PREFIX/etc/tor > /dev/null 2>&1
+    rm -rf config.sh
     ;;
   GNU/Linux)
     sudo apt install python python2 tor wget -y > /dev/null 2>&1
@@ -53,16 +54,18 @@ case "${OS}" in
     sudo pip3 install requests[socks] > /dev/null 2>&1
     sudo pip3 install stem > /dev/null 2>&1
     sudo pip3 install instagram-py > /dev/null 2>&1
-    #<<<------configuration------->>>
+    #<<<------configuration-GNU/LINUX------->>>
     sudo dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
-    sudo rm -rf /data/data/com.termux/files/usr/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
-    sudo mv -v assets/InstagramPy /data/data/com.termux/files/usr/lib/python3.9/site-packages > /dev/null 2>&1
+    sudo rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
+    sudo mv -v assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
-    sudo rm /data/data/com.termux/files/usr/etc/tor/torrc > /dev/null 2>&1
-    sudo v assets/torrc /data/data/com.termux/files/usr/etc/tor > /dev/null 2>&1
+    sudo rm -rf $PRIFIX/etc/tor/torrc > /dev/null 2>&1
+    sudo v assets/torrc $PRIFIX/etc/tor > /dev/null 2>&1
+    rm -rf config.sh
     ;;
   *)
+    rm -rf assets config.sh
     printf "${S2}[${S1}!${S2}]${S1}Sorry but your system is not compatible with this program!!\n"
     ;;
 esac
