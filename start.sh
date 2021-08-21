@@ -30,7 +30,7 @@ ${S2}<<<${S1}----------${3}Instagram~Brute${S1}----------${S2}>>>${R0}
 }
 #<<<----------Program----------->>>
 printf "${S4}Please run 'tor' in another session${R0}\n"
-printf "${S5}Press 'enter key' if you are connected to tor==> ${R0}"
+printf "${S5}Run 'y' if you are connected to tor==> ${R0}"
 read TORR
 if [[ ${TORR} == 'Y' || ${TORR} == 'y' ]]; then
 :
