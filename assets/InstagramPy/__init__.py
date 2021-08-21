@@ -16,7 +16,7 @@ __version__ = AppInformation['version']
 
 
 '''
-\033[1;34mArguments for instagram-py command-line tool\033[0m
+Arguments for instagram-py command-line tool
 '''
 cli_parser = argparse.ArgumentParser(
     epilog=AppInformation['example']

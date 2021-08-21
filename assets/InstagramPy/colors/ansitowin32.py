@@ -1,4 +1,3 @@
-# Copyright Jonathan Hartley 2013. BSD 3-Clause license, see LICENSE file.
 import re
 import sys
 import os
@@ -28,8 +27,7 @@ class StreamWrapper(object):
     Converter instance.
     '''
     def __init__(self, wrapped, converter):
-        # double-underscore everything to prevent clashes with names of
-        # attributes on the wrapped stream object.
+
         self.__wrapped = wrapped
         self.__convertor = converter
 
@@ -46,40 +44,35 @@ class AnsiToWin32(object):
     sequences from the text, and if outputting to a tty, will convert them into
     win32 function calls.
     '''
-    ANSI_CSI_RE = re.compile('\001?\033\\[((?:\\d|;)*)([a-zA-Z])\002?')   # Control Sequence Introducer
-    ANSI_OSC_RE = re.compile('\001?\033\\]((?:.|;)*?)(\x07)\002?')        # Operating System Command
+    ANSI_CSI_RE = re.compile('\001?\033\\[((?:\\d|;)*)([a-zA-Z])\002?')
+    ANSI_OSC_RE = re.compile('\001?\033\\]((?:.|;)*?)(\x07)\002?')
 
     def __init__(self, wrapped, convert=None, strip=None, autoreset=False):
-        # The wrapped stream (normally sys.stdout or sys.stderr)
+
         self.wrapped = wrapped
 
-        # should we reset colors to defaults after every .write()
+
         self.autoreset = autoreset
 
-        # create the proxy wrapping our output stream
+
         self.stream = StreamWrapper(wrapped, self)
 
         on_windows = os.name == 'nt'
-        # We test if the WinAPI works, because even if we are on Windows
-        # we may be using a terminal that doesn't support the WinAPI
-        # (e.g. Cygwin Terminal). In this case it's up to the terminal
-        # to support the ANSI codes.
         conversion_supported = on_windows and winapi_test()
 
-        # should we strip ANSI sequences from our output?
         if strip is None:
             strip = conversion_supported or (not is_stream_closed(wrapped) and not is_a_tty(wrapped))
         self.strip = strip
 
-        # should we should convert ANSI sequences into win32 calls?
+
         if convert is None:
             convert = conversion_supported and not is_stream_closed(wrapped) and is_a_tty(wrapped)
         self.convert = convert
 
-        # dict of ansi codes to win32 functions and parameters
+
         self.win32_calls = self.get_win32_calls()
 
-        # are we wrapping stderr?
+
         self.on_stderr = self.wrapped is sys.stderr
 
     def should_wrap(self):
@@ -185,12 +178,10 @@ class AnsiToWin32(object):
         if command in 'Hf':
             params = tuple(int(p) if len(p) != 0 else 1 for p in paramstring.split(';'))
             while len(params) < 2:
-                # defaults:
                 params = params + (1,)
         else:
             params = tuple(int(p) for p in paramstring.split(';') if len(p) != 0)
             if len(params) == 0:
-                # defaults:
                 if command in 'JKm':
                     params = (0,)
                 elif command in 'ABCD':
@@ -212,11 +203,11 @@ class AnsiToWin32(object):
             winterm.erase_screen(params[0], on_stderr=self.on_stderr)
         elif command in 'K':
             winterm.erase_line(params[0], on_stderr=self.on_stderr)
-        elif command in 'Hf':     # cursor position - absolute
+        elif command in 'Hf':
             winterm.set_cursor_position(params, on_stderr=self.on_stderr)
-        elif command in 'ABCD':   # cursor position - relative
+        elif command in 'ABCD':
             n = params[0]
-            # A - up, B - down, C - forward, D - back
+
             x, y = {'A': (0, -n), 'B': (0, n), 'C': (n, 0), 'D': (-n, 0)}[command]
             winterm.cursor_adjust(x, y, on_stderr=self.on_stderr)
 
@@ -226,11 +217,9 @@ class AnsiToWin32(object):
             start, end = match.span()
             text = text[:start] + text[end:]
             paramstring, command = match.groups()
-            if command in '\x07':       # \x07 = BEL
+            if command in '\x07':
                 params = paramstring.split(";")
-                # 0 - change title and icon (we will only change title)
-                # 1 - change icon (we don't support this)
-                # 2 - change title
+
                 if params[0] in '02':
                     winterm.set_title(params[1])
         return text

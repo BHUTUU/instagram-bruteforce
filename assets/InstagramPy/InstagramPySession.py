@@ -46,7 +46,7 @@ class InstagramPySession():
 
         if not os.path.isfile(password_list):
             self.cli.ReportError(
-                "password list not found at {}.".format(password_list))
+                "\033[1;32m[\033[1;31m!\033[1;32m]\033[1;31mpassword list not found at {}!!".format(password_list))
         self.password_list = password_list
         '''
             Note: Always open password list with errors ignored because all password list

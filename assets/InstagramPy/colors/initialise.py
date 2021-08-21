@@ -1,4 +1,3 @@
-# Copyright Jonathan Hartley 2013. BSD 3-Clause license, see LICENSE file.
 import atexit
 import contextlib
 import sys
@@ -16,7 +15,7 @@ atexit_done = False
 
 
 def reset_all():
-    if AnsiToWin32 is not None:    # Issue #74: objects might become None at exit
+    if AnsiToWin32 is not None:
         AnsiToWin32(orig_stdout).reset_all()
 
 

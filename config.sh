@@ -45,6 +45,7 @@ case "${OS}" in
     rm -rf $PREFIX/etc/tor/torrc > /dev/null 2>&1
     mv assets/torrc $PREFIX/etc/tor > /dev/null 2>&1
     rm -rf config.sh
+    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json
     ;;
   GNU/Linux)
     sudo apt install python python2 tor wget -y > /dev/null 2>&1
@@ -63,6 +64,7 @@ case "${OS}" in
     sudo rm -rf $PRIFIX/etc/tor/torrc > /dev/null 2>&1
     sudo v assets/torrc $PRIFIX/etc/tor > /dev/null 2>&1
     rm -rf config.sh
+    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json
     ;;
   *)
     rm -rf assets config.sh
