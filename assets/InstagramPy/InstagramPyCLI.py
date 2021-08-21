@@ -48,7 +48,7 @@ class InstagramPyCLI():
         return True
 
     def PrintDatetime(self):
-        print('{}[{}+{}{}]{} {}Started{} @ {}'.format(Style.BRIGHT,
+        print('\033[1;36m{}[{}+{}{}]{} {}Started{} @ {}\033[0m'.format(Style.BRIGHT,
                                                       Fore.YELLOW,
                                                       Style.RESET_ALL,
                                                       Style.BRIGHT,
@@ -61,12 +61,12 @@ class InstagramPyCLI():
         return True
 
     def PrintChangingIP(self):
-        print('[{}*{}] {}Changing IP Address... {}'.format(Fore.YELLOW,
+        print('\033[1;31m[{}*{}] {}Changing IP Address... {}\033[0m'.format(Fore.YELLOW,
                                                            Style.RESET_ALL, Fore.GREEN, Style.RESET_ALL))
         return True
 
     def PrintIPAddress(self, ip):
-        print('[{}+{}] {}Current IP{} :: {}{}{}'.format(Fore.RED,
+        print('\033[1;34m[{}\033[1;32m+\033[1;34m{}] {}Current IP{} :: {}{}{}\033[0m'.format(Fore.RED,
                                                         Style.RESET_ALL,
                                                         Fore.YELLOW,
                                                         Style.RESET_ALL,
@@ -77,7 +77,7 @@ class InstagramPyCLI():
         return True
 
     def PrintPassword(self, password):
-        print('[{}+{}] {}Trying [FOR] @{} {} :: {}{}{}'.format(Fore.GREEN,
+        print('\033[1;32m[{}\033[1;35m+\033[1;32m{}] {}Trying [FOR] @{} {} :: {}{}{}\033[0m'.format(Fore.GREEN,
                                                                Style.RESET_ALL,
                                                                Fore.CYAN,
                                                                self.username,
@@ -89,22 +89,22 @@ class InstagramPyCLI():
         return True
 
     def PrintRequest(self, req):
-        print('\n[{}-{}] --:: {}REQUEST START -> @{} {} ::--'.format(Fore.MAGENTA,
+        print('\n\033[1;32m[{}\033[1;31m-\033[1;32m{}] --:: {}REQUEST START -> @{} {} ::--\033[0m'.format(Fore.MAGENTA,
                                                                      Style.RESET_ALL, Back.CYAN + Style.BRIGHT, self.username, Style.RESET_ALL))
         print('{}{}{} {}{}{}'.format(Fore.GREEN, req.method,
                                      Style.RESET_ALL, Style.BRIGHT, req.url, Style.RESET_ALL))
         print('{}{}{}'.format(Fore.YELLOW, '\n'.join('{}: {}'.format(k, v)
                                                      for k, v in req.headers.items()), Style.RESET_ALL))
         print('{}{}{}'.format(Style.BRIGHT, req.body, Style.RESET_ALL))
-        print('[{}+{}] --:: {}REQUEST   END{} ::--'.format(Fore.GREEN,
+        print('033[1;32m[{}033[1;31m+033[1;32m{}] --:: {}REQUEST   END{} ::--033[0m'.format(Fore.GREEN,
                                                            Style.RESET_ALL, Back.GREEN + Style.BRIGHT, Style.RESET_ALL))
         return True
 
     def PrintResponse(self, resp):
-        print('\n[{}-{}] --:: {}RESPONSE START -> @{} {} ::--'.format(Fore.MAGENTA,
+        print('033[1;36m\n[{}033[1;33m!-!033[1;36m{}] --:: {}RESPONSE START -> @{} {} ::--033[0m'.format(Fore.MAGENTA,
                                                                       Style.RESET_ALL, Back.CYAN + Style.BRIGHT, self.username, Style.RESET_ALL))
         print('{}{}{}'.format(Style.BRIGHT, str(resp), Style.RESET_ALL))
-        print('[{}+{}] --:: {}RESPONSE   END{} ::--'.format(Fore.GREEN,
+        print('033[1;34m[{}033[1;32m+033[1;34m{}] --:: {}RESPONSE   END{} ::--033[0m'.format(Fore.GREEN,
                                                             Style.RESET_ALL, Back.GREEN + Style.BRIGHT, Style.RESET_ALL))
         return True
 
@@ -126,11 +126,11 @@ class InstagramPyCLI():
         return True
 
     def ReportAttack(self, password):
-        print('\n[{}+{}] --:: {}Completed -> @{} {} ::--'.format(Fore.YELLOW,
+        print('\n033[1;32m[033[1;35m{}+033[1;32m{}] --:: {}Completed -> @{} {} ::--033[0m'.format(Fore.YELLOW,
                                                                  Style.RESET_ALL, Back.YELLOW + Style.BRIGHT, self.username, Style.RESET_ALL),
               end='')
         if not password == None:
-            print('{}[{}*{}{}]{} {}Password Found!{}  :: {}'.format(Style.BRIGHT,
+            print('{}033[1;33m[{}033[1;31m✓033[1;33m{}{}]{} {}Password Found!{}  :: {}033[0m'.format(Style.BRIGHT,
                                                                     Fore.RED,
                                                                     Style.RESET_ALL,
                                                                     Style.BRIGHT,
@@ -140,7 +140,7 @@ class InstagramPyCLI():
                                                                     password + Style.RESET_ALL
                                                                     ))
         else:
-            print('{}{}Password not found , Try using another wordlist.{}'.format(
+            print('033[1;32m{}[033[1;31m!!033[1;32m{}033[1;32m]033[1;31mPassword not found , Try using another wordlist.{}033[0m'.format(
                 Style.BRIGHT, Fore.RED, Style.RESET_ALL))
 
         print('{}[{}+{}{}]{} {}Finnished in {}{}'.format(Style.BRIGHT,
@@ -156,7 +156,7 @@ class InstagramPyCLI():
         return True
 
     def PrintFooter(self):
-        print('\n{}Report bug, suggestions and new features at {}{}https://github.com/deathsec/instagram-py{}'.format(Fore.GREEN,
+        print('\n{}033[1;35mGithub:->>{}{}033[1;31mhttps://github.com/BHUTUU/IG-BHUTUU{}033[0mm'.format(Fore.GREEN,
                                                                                                                       Style.RESET_ALL,
                                                                                                                       Style.BRIGHT,
                                                                                                                       Style.RESET_ALL
