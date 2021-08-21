@@ -29,6 +29,8 @@ case "${OS}" in
       printf "${S2}[${S1}!${S2}]${S1}Sorry but your system is not compatible with this program!!\n"
       exit 1
     fi
+    printf "${S3} INSTALLING REQUIREMENTS ........${R0}\n"
+    echo
     apt install python python2 tor wget -y > /dev/null 2>&1
     pip install --upgrade pip > /dev/null 2>&1
     pip install bs4 colorama lolcat > /dev/null 2>&1
@@ -39,15 +41,19 @@ case "${OS}" in
     #<<<------configuration-ANDROID------->>>
     dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
+    cp -r $PREFIX/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy > /dev/null 2>&1
     rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
     mv -v assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
+    cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
     rm -rf $PREFIX/etc/tor/torrc > /dev/null 2>&1
     mv assets/torrc $PREFIX/etc/tor > /dev/null 2>&1
     rm -rf config.sh
-    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json
+    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json > /dev/null 2>&1
     ;;
   GNU/Linux)
+    printf "${S3} INSTALLING REQUIREMENTS ........${R0}\n"
+    echo
     sudo apt install python python2 tor wget -y > /dev/null 2>&1
     sudo pip install --upgrade pip > /dev/null 2>&1
     sudo pip install bs4 colorama lolcat > /dev/null 2>&1
@@ -58,13 +64,15 @@ case "${OS}" in
     #<<<------configuration-GNU/LINUX------->>>
     sudo dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
+    sudo cp -r $PREFIX/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy > /dev/null 2>&1
     sudo rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
     sudo mv -v assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
+    sudo cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
     sudo rm -rf $PRIFIX/etc/tor/torrc > /dev/null 2>&1
     sudo v assets/torrc $PRIFIX/etc/tor > /dev/null 2>&1
     rm -rf config.sh
-    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json
+    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json > /dev/null 2>&1
     ;;
   *)
     rm -rf assets config.sh
