@@ -43,14 +43,14 @@ case "${OS}" in
     echo -e "\e[1;34mConfiguring.......\e[0m"
     cp -r $PREFIX/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy/ > /dev/null 2>&1
     cp -r $PREFIX/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/ > /dev/null 2>&1
-    #rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
-    #cp -r assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
+    rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
+    cp -r assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
     cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
     rm -rf $PREFIX/etc/tor/torrc > /dev/null 2>&1
     mv assets/torrc $PREFIX/etc/tor > /dev/null 2>&1
     rm -rf config.sh
-    if [[ -d ~/.instagram-py ]]; then
+    if [[ ! -d ~/.instagram-py ]]; then
     mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json > /dev/null 2>&1
     fi
     ;;
@@ -69,14 +69,14 @@ case "${OS}" in
     echo -e "\e[1;34mConfiguring.......\e[0m"
     sudo cp -r $PREFIX/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy > /dev/null 2>&1
     sudo cp -r $PREFIX/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/ > /dev/null 2>&1
-    #sudo rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
-    #sudo cp -r assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
+    sudo rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
+    sudo cp -r assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
     sudo cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
     sudo rm -rf $PRIFIX/etc/tor/torrc > /dev/null 2>&1
     sudo v assets/torrc $PRIFIX/etc/tor > /dev/null 2>&1
     rm -rf config.sh
-    if [[ -d ~/.instagram-py ]]; then
+    if [[ ! -d ~/.instagram-py ]]; then
     mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json > /dev/null 2>&1
     fi
     ;;
