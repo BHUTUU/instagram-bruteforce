@@ -71,7 +71,7 @@ class InstagramPyConfigurationCreator():
             self.default_config['tor']['port'] = tor_port
         if tor_control_port != '':
             self.default_config['tor']['control']['port'] = tor_control_port
-        if tor_control_password is not '':
+        if tor_control_password != '':
             self.default_config['tor']['control']['password'] = tor_control_password
 
         if self.config_fp != None:
