@@ -130,7 +130,7 @@ class InstagramPyCLI():
                                                                  Style.RESET_ALL, Back.YELLOW + Style.BRIGHT, self.username, Style.RESET_ALL),
               end='')
         if not password == None:
-            print('{}\033[1;33m[{}\033[1;31m✓\033[1;33m{}{}]{} {}\033[1;33mPassword Found!{}  :: {}\033[0m'.format(Style.BRIGHT,
+            print('{}\033[1;33m[{}\033[1;31m✓{}{}\033[1;33m]{} {}\033[1;33mPassword Found!{}  :: {}\033[0m'.format(Style.BRIGHT,
                                                                     Fore.RED,
                                                                     Style.RESET_ALL,
                                                                     Style.BRIGHT,

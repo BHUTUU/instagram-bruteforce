@@ -101,7 +101,7 @@ class InstagramPyScript():
             self.cli.ReportError("invalid script :: {}".format(e))
 
         self.no_of_threads = len(self.threads)
-        while self.no_of_threads is not 0:
+        while self.no_of_threads != 0:
             for i in self.threads:
                 if self.threads[i]['terminated'] is True:
                     continue
