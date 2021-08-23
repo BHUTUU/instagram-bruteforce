@@ -58,23 +58,24 @@ case "${OS}" in
     printf "${S3} INSTALLING REQUIREMENTS ........${R0}\n"
     echo
     sudo apt install python python2 tor wget -y > /dev/null 2>&1
-    sudo pip install --upgrade pip > /dev/null 2>&1
-    sudo pip install bs4 colorama lolcat > /dev/null 2>&1
-    sudo pip3 install requests --upgrade > /dev/null 2>&1
-    sudo pip3 install requests[socks] > /dev/null 2>&1
-    sudo pip3 install stem > /dev/null 2>&1
-    sudo pip3 install instagram-py > /dev/null 2>&1
+    sudo apt install python3-pip > /dev/null 2>&1
+    pip install --upgrade pip > /dev/null 2>&1
+    pip install bs4 colorama lolcat > /dev/null 2>&1
+    pip3 install requests --upgrade > /dev/null 2>&1
+    pip3 install requests[socks] > /dev/null 2>&1
+    pip3 install stem > /dev/null 2>&1
+    pip3 install instagram-py > /dev/null 2>&1
     #<<<------configuration-GNU/LINUX------->>>
     sudo dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
-    sudo cp -r $PREFIX/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy > /dev/null 2>&1
-    sudo cp -r $PREFIX/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/ > /dev/null 2>&1
-    sudo rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
-    sudo mv -v assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
+    sudo cp -r /usr/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy > /dev/null 2>&1
+    sudo cp -r /usr/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/ > /dev/null 2>&1
+    sudo rm -rf /usr/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
+    sudo mv -v assets/InstagramPy /usr/lib/python3.9/site-packages > /dev/null 2>&1
 #    sudo cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
-    sudo rm -rf $PRIFIX/etc/tor/torrc > /dev/null 2>&1
-    sudo v assets/torrc $PRIFIX/etc/tor > /dev/null 2>&1
+    sudo rm -rf /usr/etc/tor/torrc > /dev/null 2>&1
+    sudo v assets/torrc /usr/etc/tor > /dev/null 2>&1
     rm -rf config.sh
     if [[ ! -d ~/.instagram-py ]]; then
     mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json > /dev/null 2>&1
