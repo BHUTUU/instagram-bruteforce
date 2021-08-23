@@ -65,16 +65,16 @@ class InstagramPyConfigurationCreator():
         print("{}Writing Configuration...{}".format(
             Style.BRIGHT, Style.RESET_ALL))
 
-        if tor_server_ip is not '':
+        if tor_server_ip != '':
             self.default_config['tor']['server'] = tor_server_ip
-        if tor_port is not '':
+        if tor_port != '':
             self.default_config['tor']['port'] = tor_port
-        if tor_control_port is not '':
+        if tor_control_port != '':
             self.default_config['tor']['control']['port'] = tor_control_port
         if tor_control_password is not '':
             self.default_config['tor']['control']['password'] = tor_control_password
 
-        if self.config_fp is not None:
+        if self.config_fp != None:
             json.dump(self.default_config, self.config_fp)
         else:
             with open(self.config_path, 'w') as f:
