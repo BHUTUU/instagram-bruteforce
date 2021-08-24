@@ -57,29 +57,30 @@ case "${OS}" in
   GNU/Linux)
     printf "${S3} INSTALLING REQUIREMENTS ........${R0}\n"
     echo
-    sudo apt install python python2 tor wget -y
-    sudo apt install python3-pip
+    sudo apt-get install python python2 tor wget -y
+    sudo apt-get install python3-pip
     pip install --upgrade pip
     pip install bs4 colorama lolcat
     pip3 install requests --upgrade
     pip3 install requests[socks]
     pip3 install stem
-    pip3 install instagram-py
+    pip3 install instagram-py > /dev/null 2>&1
     #<<<------configuration-GNU/LINUX------->>>
     sudo dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
-    sudo cp -r /usr/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy
+    sudo cp -r /usr/lib/python3.9/site-packages/InstagramPy/__p* ${CWD}/assets/InstagramPy
     sudo cp -r /usr/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/
     sudo rm -rf /usr/lib/python3.9/site-packages/InstagramPy
     sudo mv -v assets/InstagramPy /usr/lib/python3.9/site-packages
 #    sudo cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME
     sudo rm -rf /usr/etc/tor/torrc
-    sudo v assets/torrc /usr/etc/tor
+    sudo mv -v assets/torrc /usr/etc/tor
     rm -rf config.sh
     if [[ ! -d ~/.instagram-py ]]; then
-    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json
+    mkdir ~/.instagram-py && touch ~/.instagram-py/dump.json > /dev/null 2>&1
     fi
+
     ;;
   *)
     rm -rf assets config.sh
