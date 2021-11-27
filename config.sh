@@ -41,11 +41,11 @@ case "${OS}" in
     #<<<------configuration-ANDROID------->>>
     dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
-    cp -r $PREFIX/lib/python3.9/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy/ > /dev/null 2>&1
-    cp -r $PREFIX/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/ > /dev/null 2>&1
-    rm -rf $PREFIX/lib/python3.9/site-packages/InstagramPy > /dev/null 2>&1
-    mv -v assets/InstagramPy $PREFIX/lib/python3.9/site-packages > /dev/null 2>&1
-#    cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
+    cp -r $PREFIX/lib/python3.*/site-packages/InstagramPy/__p*  ${CWD}/assets/InstagramPy/ > /dev/null 2>&1
+    cp -r $PREFIX/lib/python3.*/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/ > /dev/null 2>&1
+    rm -rf $PREFIX/lib/python3.*/site-packages/InstagramPy > /dev/null 2>&1
+    mv -v assets/InstagramPy $PREFIX/lib/python3.*/site-packages > /dev/null 2>&1
+#    cp -r $PREFIX/lib/python3.*/site-packages/instagram_py-2.0.7-py3.*.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME > /dev/null 2>&1
     rm -rf $PREFIX/etc/tor/torrc > /dev/null 2>&1
     mv assets/torrc $PREFIX/etc/tor > /dev/null 2>&1
@@ -68,11 +68,11 @@ case "${OS}" in
     #<<<------configuration-GNU/LINUX------->>>
     sudo dpkg --configure -a
     echo -e "\e[1;34mConfiguring.......\e[0m"
-    sudo cp -r /usr/lib/python3.9/site-packages/InstagramPy/__p* ${CWD}/assets/InstagramPy
-    sudo cp -r /usr/lib/python3.9/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/
-    sudo rm -rf /usr/lib/python3.9/site-packages/InstagramPy
-    sudo mv -v assets/InstagramPy /usr/lib/python3.9/site-packages
-#    sudo cp -r $PREFIX/lib/python3.9/site-packages/instagram_py-2.0.7-py3.9.egg-info ${CWD}/assets
+    sudo cp -r /usr/lib/python3.*/site-packages/InstagramPy/__p* ${CWD}/assets/InstagramPy
+    sudo cp -r /usr/lib/python3.*/site-packages//InstagramPy/colors/__pycache__ ${CWD}/assets/InstagramPy/colors/
+    sudo rm -rf /usr/lib/python3.*/site-packages/InstagramPy
+    sudo mv -v assets/InstagramPy /usr/lib/python3.*/site-packages
+#    sudo cp -r $PREFIX/lib/python3.*/site-packages/instagram_py-2.0.7-py3.*.egg-info ${CWD}/assets
     mv -v assets/instapy-config.json $HOME
     sudo rm -rf /usr/etc/tor/torrc
     sudo mv -v assets/torrc /usr/etc/tor
