@@ -18,6 +18,10 @@ exit_on_signal_SIGINT () {
     exit 0
 }
 trap exit_on_signal_SIGINT SIGINT
+if [[ -e "$CWD/config.sh" ]]; then
+    bash $CWD/config.sh
+    cd $CWD
+fi
 #<<<---------BANNER--------->>>
 __banner__() {
 echo -e "
